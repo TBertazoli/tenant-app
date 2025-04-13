@@ -2,7 +2,7 @@ const LABELS = {
   loading: "Loading...",
   navigation: {
     messages: {
-      href: "/messaging",
+      href: "/message",
       text: "Messages",
       icon: "messageIcon",
     },
@@ -25,7 +25,7 @@ const LABELS = {
 
   navigationAdmin: {
     messages: {
-      href: "/messaging",
+      href: "/message",
       text: "Messages",
       icon: "messageIcon",
     },
@@ -203,7 +203,7 @@ const LABELS = {
       icon: "guestParkingIcon",
     },
     viewMessages: {
-      href: "/messaging",
+      href: "/message",
       text: "Messages",
       icon: "mailIcon",
     },
@@ -225,7 +225,7 @@ const LABELS = {
   },
   adminDashboardBtns: {
     messages: {
-      href: "/messaging",
+      href: "/message",
       text: "View Messages",
       icon: "mailIcon",
     },
@@ -500,7 +500,8 @@ const LABELS = {
     leaseDocumentDetails: "Lease document details",
     noLeaseSelected: "No lease selected",
     selectLeasePrompt: "Select a lease from the list to view its details",
-    selectLeaseToViewDetails: "Select a lease from the list to view its details",
+    selectLeaseToViewDetails:
+      "Select a lease from the list to view its details",
     generateNewLease: "Generate New Lease",
     yourLeases: "Your Leases",
     yourLeaseAgreement: "Your Lease Agreement",
@@ -517,8 +518,10 @@ const LABELS = {
     expiredStatus: "Expired",
     updateError: "Failed to update lease status. Please try again.",
     leaseExpires: "Lease expires on",
-    leasePending: "This lease is pending signature. You'll be notified when it's ready.",
-    signedLeaseMessage: "A copy of your signed lease was emailed to the account on file at the time of the lease signing",
+    leasePending:
+      "This lease is pending signature. You'll be notified when it's ready.",
+    signedLeaseMessage:
+      "A copy of your signed lease was emailed to the account on file at the time of the lease signing",
     apartmentRequired: "Apartment number is required",
     issuedOn: "Issued on",
     leaseSummary: "Lease Summary",
@@ -535,29 +538,37 @@ const LABELS = {
     status: "Status",
     actions: "Actions",
     howToRequestMaintenance: "How do I request maintenance?",
-    requestMaintenanceInstructions: "You can submit maintenance requests through the Maintenance tab in your tenant portal or by calling the property management office.",
+    requestMaintenanceInstructions:
+      "You can submit maintenance requests through the Maintenance tab in your tenant portal or by calling the property management office.",
     whatHappensWhenLeaseExpires: "What happens when my lease expires?",
-    leaseExpirationInstructions: "Your property manager will contact you 60-90 days before your lease expires to discuss renewal options.",
+    leaseExpirationInstructions:
+      "Your property manager will contact you 60-90 days before your lease expires to discuss renewal options.",
     canAddRoommate: "Can I add a roommate to my lease?",
-    addRoommateInstructions: "Adding a roommate requires approval from property management and an amendment to your current lease. Contact the leasing office for details.",
+    addRoommateInstructions:
+      "Adding a roommate requires approval from property management and an amendment to your current lease. Contact the leasing office for details.",
     howToPayRent: "How do I pay my rent?",
-    payRentInstructions: "Rent can be paid online through the Payments tab in your tenant portal, or by check/money order at the leasing office.",
+    payRentInstructions:
+      "Rent can be paid online through the Payments tab in your tenant portal, or by check/money order at the leasing office.",
     faqMaintenance: {
       question: "How do I request maintenance?",
-      answer: "You can submit maintenance requests through the Maintenance tab in your tenant portal or by calling the property management office."
+      answer:
+        "You can submit maintenance requests through the Maintenance tab in your tenant portal or by calling the property management office.",
     },
     faqExpiration: {
       question: "What happens when my lease expires?",
-      answer: "Your property manager will contact you 60-90 days before your lease expires to discuss renewal options."
+      answer:
+        "Your property manager will contact you 60-90 days before your lease expires to discuss renewal options.",
     },
     faqRoommate: {
       question: "Can I add a roommate to my lease?",
-      answer: "Adding a roommate requires approval from property management and an amendment to your current lease. Contact the leasing office for details."
+      answer:
+        "Adding a roommate requires approval from property management and an amendment to your current lease. Contact the leasing office for details.",
     },
     faqRent: {
       question: "How do I pay my rent?",
-      answer: "Rent can be paid online through the Payments tab in your tenant portal, or by check/money order at the leasing office."
-    }
+      answer:
+        "Rent can be paid online through the Payments tab in your tenant portal, or by check/money order at the leasing office.",
+    },
   },
 };
 

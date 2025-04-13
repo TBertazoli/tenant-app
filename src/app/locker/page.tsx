@@ -146,7 +146,7 @@ export default function Home() {
           <p className="text-gray-600 mb-4">
             {LABELS.packageList.helpDescription}
           </p>
-          <Link href="/messaging">
+          <Link href="/message">
             <button className="bg-secondary-blue hover:bg-blue-800 text-white px-4 py-2 rounded-md transition-colors duration-300">
               {LABELS.packageList.contactButton}
             </button>
