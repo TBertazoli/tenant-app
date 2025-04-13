@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import LABELS from "../constants/labels";
 import { MessageSquare, PenSquare, X, AlertCircle } from "lucide-react";
 import Footer from "../components/Footer";
-import { useNotifications } from '@/context/NotificationsContext';
+import { useNotifications } from "@/context/NotificationsContext";
 import { useAuth } from "../hooks/useAuth";
 
 type Message = {
@@ -43,51 +43,80 @@ type NotificationData = {
 
 export default function MessagesPage() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const {
-    notifications: rawNotificationData,
-    getNotifications
-  } = useNotifications();
+  const { notifications: rawNotificationData, getNotifications } =
+    useNotifications();
   const [showCompose, setShowCompose] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { user } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const transformNotificationsToMessages = useCallback((notifications: NotificationData[]): Message[] => {
-    return notifications.map((notification) => {
-      const subject = notification.subject || LABELS.messaging.noSubject;
-      const body = notification.message || "";
-      const combinedText = (subject + " " + body).toLowerCase();
-      const apartmentNumber = notification.sender?.apartmentNumber || notification.receiver?.apartmentNumber || notification.apartmentNumber || undefined;
-      
-      let type = notification.notificationType?.toLowerCase() || "general";
-      
-      if (combinedText.includes("noise") || combinedText.includes("complaint") || combinedText.includes("loud")) {
-        type = "noise_complaint";
-      } else if (combinedText.includes("package") || combinedText.includes("delivery") || combinedText.includes("mail")) {
-        type = "package";
-      } else if (combinedText.includes("lease") || combinedText.includes("contract") || combinedText.includes("agreement")) {
-        type = "lease";
-      } else if (combinedText.includes("management") || combinedText.includes("admin") || combinedText.includes("office")) {
-        type = "management";
-      }
-      
-      return {
-        id: notification.id,
-        subject: subject,
-        body: body,
-        createdAt: notification.createdAt,
-        type: type as "package" | "management" | "lease" | "general" | "noise_complaint",
-        apartmentNumber: apartmentNumber,
-        status: notification.status,
-        priority: notification.priority
-      };
-    });
-  }, []);
+  const transformNotificationsToMessages = useCallback(
+    (notifications: NotificationData[]): Message[] => {
+      return notifications.map((notification) => {
+        const subject = notification.subject || LABELS.messaging.noSubject;
+        const body = notification.message || "";
+        const combinedText = (subject + " " + body).toLowerCase();
+        const apartmentNumber =
+          notification.sender?.apartmentNumber ||
+          notification.receiver?.apartmentNumber ||
+          notification.apartmentNumber ||
+          undefined;
+
+        let type = notification.notificationType?.toLowerCase() || "general";
+
+        if (
+          combinedText.includes("noise") ||
+          combinedText.includes("complaint") ||
+          combinedText.includes("loud")
+        ) {
+          type = "noise_complaint";
+        } else if (
+          combinedText.includes("package") ||
+          combinedText.includes("delivery") ||
+          combinedText.includes("mail")
+        ) {
+          type = "package";
+        } else if (
+          combinedText.includes("lease") ||
+          combinedText.includes("contract") ||
+          combinedText.includes("agreement")
+        ) {
+          type = "lease";
+        } else if (
+          combinedText.includes("management") ||
+          combinedText.includes("admin") ||
+          combinedText.includes("office")
+        ) {
+          type = "management";
+        }
+
+        return {
+          id: notification.id,
+          subject: subject,
+          body: body,
+          createdAt: notification.createdAt,
+          type: type as
+            | "package"
+            | "management"
+            | "lease"
+            | "general"
+            | "noise_complaint",
+          apartmentNumber: apartmentNumber,
+          status: notification.status,
+          priority: notification.priority,
+        };
+      });
+    },
+    []
+  );
 
   useEffect(() => {
     if (user) {
-      if (user.email.includes("admin") || user.prefs && user.prefs.role === 'admin') {
+      if (
+        user.email.includes("admin") ||
+        (user.prefs && user.prefs.role === "admin")
+      ) {
         setIsAdmin(true);
       }
     }
@@ -112,7 +141,9 @@ export default function MessagesPage() {
         }
 
         // Transform notifications to messages format
-        const transformedMessages = transformNotificationsToMessages(rawNotificationData || []);
+        const transformedMessages = transformNotificationsToMessages(
+          rawNotificationData || []
+        );
         setMessages(transformedMessages);
         setIsLoading(false);
       } catch (err) {
